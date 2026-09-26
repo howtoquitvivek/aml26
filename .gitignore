@@ -14,8 +14,9 @@ env/
 .ipynb_checkpoints/
 */.ipynb_checkpoints/*
 
-# PS 
+# PS/SSH
 .ps
+.ssh
 
 # Pytest
 .pytest_cache/
@@ -39,3 +40,4 @@ output/*.zip
 *.parquet
 # Generated blocking indexes
 experiments/phase4/artifacts/indexes/
+experiments/phase7/*_results.json
