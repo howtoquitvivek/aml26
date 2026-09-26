@@ -1,0 +1,20 @@
+{
+  "macro_f0_5": 0.8393071002828135,
+  "macro_precision": 0.8845111451126043,
+  "macro_recall": 0.7681913028710243,
+  "tp": 589876,
+  "fp": 55808,
+  "fn": 173716,
+  "singleton_accuracy": 0.7225963488843813,
+  "total_cands_before_k": 40411291,
+  "total_cands_after_k": 23434454,
+  "avg_cands_after_k": 106.19057199693678,
+  "predicted_matches": 645684,
+  "predicted_empty": 16731,
+  "runtime": 2187.4167976379395,
+  "peak_rss": 10421.0390625,
+  "newly_recovered_total": 57011,
+  "newly_recovered_survived_k": 52962,
+  "newly_recovered_accepted": 35377,
+  "newly_recovered_rejected": 17585
+}
