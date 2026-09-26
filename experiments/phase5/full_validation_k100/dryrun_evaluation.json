@@ -1,0 +1,44 @@
+{
+  "metrics": {
+    "macro_f0_5": 0.775021,
+    "macro_precision": 0.905309,
+    "macro_recall": 0.696679,
+    "tp": 447,
+    "fp": 60,
+    "fn": 218,
+    "singleton_acc": 0.533333
+  },
+  "blocker_metrics": {
+    "blocking_recall": 0.789474,
+    "total_candidates": 29925,
+    "avg_candidates": 149.62,
+    "median_candidates": 26,
+    "p95_candidates": 604,
+    "p99_candidates": 1563,
+    "max_candidates": 5930,
+    "s1_over_1k": 3,
+    "s1_over_100_before_topk": 57,
+    "s1_reaching_exactly_100_fed_to_lr": 58,
+    "s1_over_5k": 1,
+    "s1_over_10k": 0,
+    "s1_over_50k": 0,
+    "final_topk_count": 9177
+  },
+  "final_output_metrics": {
+    "accepted_matches": 507,
+    "predicted_singletons": 38,
+    "duplicate_output_ids": 0,
+    "invalid_output_ids": 0,
+    "average_final_candidates": 2.54
+  },
+  "resource_metrics": {
+    "times": {
+      "index_load": 31.91,
+      "candidate_gen": 0.79,
+      "feature_extract": 13.11,
+      "lr_scoring": 0.0
+    },
+    "total_runtime": 50.92,
+    "peak_rss_mb": 5141.5
+  }
+}

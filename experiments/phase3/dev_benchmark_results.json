@@ -1,0 +1,83 @@
+{
+  "sample_info": {
+    "n_entities": 1500,
+    "country_distribution": {
+      "India": 601,
+      "US": 899
+    },
+    "match_bin_distribution": {
+      "0_singleton": 84,
+      "1_match": 81,
+      "2_matches": 255,
+      "3_matches": 361,
+      "4_matches": 329,
+      "5_plus_matches": 390
+    },
+    "singleton_count": 84
+  },
+  "blocking_cfg1": {
+    "total_candidates": 822813,
+    "avg_per_s1": 548.54,
+    "median_per_s1": 40.5,
+    "p95_per_s1": 1159.0,
+    "p99_per_s1": 17367.1,
+    "max_per_s1": 18693,
+    "total_gt_links": 5214,
+    "recovered": 4047,
+    "blocking_recall": 0.77618,
+    "missed": 1167
+  },
+  "blocking_cfg2": {
+    "total_candidates": 963777,
+    "avg_per_s1": 642.52,
+    "median_per_s1": 77.0,
+    "p95_per_s1": 1557.0,
+    "p99_per_s1": 17402.8,
+    "max_per_s1": 18693,
+    "total_gt_links": 5214,
+    "recovered": 4251,
+    "blocking_recall": 0.815305,
+    "missed": 963
+  },
+  "blocking_cfg3": {
+    "total_candidates": 1528425,
+    "avg_per_s1": 1018.95,
+    "median_per_s1": 174.0,
+    "p95_per_s1": 4853.0,
+    "p99_per_s1": 17559.0,
+    "max_per_s1": 23172,
+    "total_gt_links": 5214,
+    "recovered": 4338,
+    "blocking_recall": 0.831991,
+    "missed": 876
+  },
+  "matching": {
+    "config": {
+      "budget": 25,
+      "threshold": 0.7,
+      "matcher_config": "conservative_precision"
+    },
+    "macro_f0_5": 0.648874,
+    "macro_precision": 0.727044,
+    "macro_recall": 0.525507,
+    "aggregate_tp": 2771,
+    "aggregate_fp": 799,
+    "aggregate_fn": 2443,
+    "singleton_count": 84,
+    "singleton_correct": 38,
+    "singleton_accuracy": 0.452381,
+    "non_singleton_macro_f0_5": 0.66053,
+    "per_entity_f0_5_distribution": {
+      "min": 0.0,
+      "p25": 0.5,
+      "p50": 0.7692,
+      "p75": 0.9091,
+      "p95": 1.0,
+      "max": 1.0
+    }
+  },
+  "runtime": {
+    "total_seconds": 278.1,
+    "peak_rss_mb": 4954.9
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "val_fraction": 0.1,
+  "random_seed": 42,
+  "train_set": {
+    "total_s1": 1986138,
+    "countries": {
+      "India": {
+        "count": 794869,
+        "pct": 40.02
+      },
+      "US": {
+        "count": 1191269,
+        "pct": 59.98
+      }
+    },
+    "singletons": {
+      "count": 110922,
+      "pct": 5.5848
+    },
+    "match_count_distribution": {
+      "0": 110922,
+      "1": 107241,
+      "2": 337691,
+      "3": 477757,
+      "4": 435703,
+      "5": 289687,
+      "6": 148338,
+      "7": 57664,
+      "8": 16806,
+      "9": 3817,
+      "10": 477,
+      "11": 35
+    }
+  },
+  "val_set": {
+    "total_s1": 220683,
+    "countries": {
+      "India": {
+        "count": 88319,
+        "pct": 40.02
+      },
+      "US": {
+        "count": 132364,
+        "pct": 59.98
+      }
+    },
+    "singletons": {
+      "count": 12325,
+      "pct": 5.5849
+    },
+    "match_count_distribution": {
+      "0": 12325,
+      "1": 11916,
+      "2": 37521,
+      "3": 53084,
+      "4": 48412,
+      "5": 32270,
+      "6": 16530,
+      "7": 6304,
+      "8": 1874,
+      "9": 388,
+      "10": 57,
+      "11": 2
+    }
+  },
+  "strata_breakdown": {
+    "India__0_singleton": {
+      "total": 49351,
+      "train": 44416,
+      "val": 4935,
+      "val_pct": 10.0
+    },
+    "India__1_match": {
+      "total": 47468,
+      "train": 42721,
+      "val": 4747,
+      "val_pct": 10.0
+    },
+    "India__2_matches": {
+      "total": 149927,
+      "train": 134934,
+      "val": 14993,
+      "val_pct": 10.0
+    },
+    "India__3_matches": {
+      "total": 211965,
+      "train": 190769,
+      "val": 21196,
+      "val_pct": 10.0
+    },
+    "India__4_matches": {
+      "total": 193669,
+      "train": 174302,
+      "val": 19367,
+      "val_pct": 10.0
+    },
+    "India__5_plus_matches": {
+      "total": 230808,
+      "train": 207727,
+      "val": 23081,
+      "val_pct": 10.0
+    },
+    "US__0_singleton": {
+      "total": 73896,
+      "train": 66506,
+      "val": 7390,
+      "val_pct": 10.0
+    },
+    "US__1_match": {
+      "total": 71689,
+      "train": 64520,
+      "val": 7169,
+      "val_pct": 10.0
+    },
+    "US__2_matches": {
+      "total": 225285,
+      "train": 202757,
+      "val": 22528,
+      "val_pct": 10.0
+    },
+    "US__3_matches": {
+      "total": 318876,
+      "train": 286988,
+      "val": 31888,
+      "val_pct": 10.0
+    },
+    "US__4_matches": {
+      "total": 290446,
+      "train": 261401,
+      "val": 29045,
+      "val_pct": 10.0
+    },
+    "US__5_plus_matches": {
+      "total": 343441,
+      "train": 309097,
+      "val": 34344,
+      "val_pct": 10.0
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "total_gt": 5214,
+  "CFG1_Base": {
+    "recovered": 4047,
+    "missed": 1167,
+    "recall": 0.7762,
+    "avg_cands": 548.5,
+    "p95_cands": 1159.0,
+    "p99_cands": 17367.1,
+    "max_cands": 18693
+  },
+  "CFG1_NoTwoTok": {
+    "recovered": 3770,
+    "missed": 1444,
+    "recall": 0.7231,
+    "avg_cands": 108.2,
+    "p95_cands": 551.1,
+    "p99_cands": 1262.0,
+    "max_cands": 4200
+  },
+  "CFG_New_AddrOnly": {
+    "recovered": 4236,
+    "missed": 978,
+    "recall": 0.8124,
+    "avg_cands": 263.9,
+    "p95_cands": 1452.9,
+    "p99_cands": 3571.5,
+    "max_cands": 6670
+  }
+}

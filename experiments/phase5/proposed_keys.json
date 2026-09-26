@@ -1,0 +1,20 @@
+{
+  "Key_Consonants": {
+    "gt_recovered": 4248,
+    "avg_explosion": 12719.626925148088,
+    "p95_explosion": 45400,
+    "max_explosion": 220713
+  },
+  "Key_AddrAlpha": {
+    "gt_recovered": 6650,
+    "avg_explosion": 58125.52282597183,
+    "p95_explosion": 261492,
+    "max_explosion": 724757
+  },
+  "Key_NameNum": {
+    "gt_recovered": 116,
+    "avg_explosion": 2121.548780487805,
+    "p95_explosion": 6180,
+    "max_explosion": 6640
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "BASELINE": {
+    "recall": 0.7425051598235707,
+    "total_cands": 10016298,
+    "avg_cands": 45.38771903590218,
+    "median": 27.0,
+    "p95": 100.0,
+    "p99": 100.0,
+    "max": 100,
+    "zero_cands": 3025,
+    "missed": 196621
+  },
+  "EXP_B_NO_SUPPRESS": {
+    "recall": 0.8014698949177047,
+    "total_cands": 27862455,
+    "avg_cands": 126.2555566128791,
+    "median": 27.0,
+    "p95": 580.0,
+    "p99": 1007.0,
+    "max": 3237,
+    "zero_cands": 3025,
+    "missed": 151596
+  },
+  "EXP_A_UNION": {
+    "recall": 0.7426898134082075,
+    "total_cands": 11347561,
+    "avg_cands": 51.42018642124677,
+    "median": 27.0,
+    "p95": 152.0,
+    "p99": 190.0,
+    "max": 200,
+    "zero_cands": 3025,
+    "missed": 196480
+  },
+  "EXP_C_ADD_ZIP": {
+    "recall": 0.743245083762009,
+    "total_cands": 14490240,
+    "avg_cands": 65.6608800859151,
+    "median": 100.0,
+    "p95": 100.0,
+    "p99": 100.0,
+    "max": 100,
+    "zero_cands": 2253,
+    "missed": 196056
+  }
+}

@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# PS 
+.ps
+
+# Pytest
+.pytest_cache/
+
+# OS and IDE
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+.env
+
+# Logs and Caches
+*.log
+experiments/cache/
+
+# Large Datasets and Output
+dataset/
+output/*.tsv
+output/*.zip
+*.parquet
+# Generated blocking indexes
+experiments/phase4/artifacts/indexes/

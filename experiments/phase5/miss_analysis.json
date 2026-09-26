@@ -1,0 +1,18 @@
+{
+  "total_gt_pairs": 763592,
+  "total_missed": 244513,
+  "total_rejected": 47461,
+  "total_accepted": 471618,
+  "miss_stats": {
+    "cross_script": 0.2192,
+    "high_name_char_overlap": 0.5856,
+    "high_addr_char_overlap": 0.7753,
+    "shared_numbers": 0.6447,
+    "shared_pincode": 0.0003,
+    "shared_10digit_phone": 0.0,
+    "exact_name_match": 0.0078,
+    "generic_name": 0.0099,
+    "india_misses": 0.531,
+    "us_misses": 0.469
+  }
+}

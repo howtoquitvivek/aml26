@@ -1,0 +1,98 @@
+{
+  "ablation_results": {
+    "K_25": {
+      "blocker_metrics": {
+        "blocking_recall": 0.677055,
+        "total_candidates": 166264,
+        "avg_candidates": 16.63,
+        "median_candidates": 25,
+        "p95_candidates": 25,
+        "p99_candidates": 25,
+        "max_candidates": 25,
+        "gt_pairs_surviving": 23397,
+        "final_topk_count": 166264
+      },
+      "lr_best_threshold": 0.9,
+      "metrics": {
+        "macro_f0_5": 0.728612,
+        "macro_precision": 0.812205,
+        "macro_recall": 0.602904,
+        "tp": 20589,
+        "fp": 1773,
+        "fn": 13968,
+        "singleton_acc": 0.772809
+      }
+    },
+    "K_50": {
+      "blocker_metrics": {
+        "blocking_recall": 0.701855,
+        "total_candidates": 278784,
+        "avg_candidates": 27.88,
+        "median_candidates": 26,
+        "p95_candidates": 50,
+        "p99_candidates": 50,
+        "max_candidates": 50,
+        "gt_pairs_surviving": 24254,
+        "final_topk_count": 278784
+      },
+      "lr_best_threshold": 0.9,
+      "metrics": {
+        "macro_f0_5": 0.741162,
+        "macro_precision": 0.815599,
+        "macro_recall": 0.633655,
+        "tp": 21827,
+        "fp": 2595,
+        "fn": 12730,
+        "singleton_acc": 0.72093
+      }
+    },
+    "K_75": {
+      "blocker_metrics": {
+        "blocking_recall": 0.724455,
+        "total_candidates": 370219,
+        "avg_candidates": 37.02,
+        "median_candidates": 26,
+        "p95_candidates": 75,
+        "p99_candidates": 75,
+        "max_candidates": 75,
+        "gt_pairs_surviving": 25035,
+        "final_topk_count": 370219
+      },
+      "lr_best_threshold": 0.9,
+      "metrics": {
+        "macro_f0_5": 0.752136,
+        "macro_precision": 0.820518,
+        "macro_recall": 0.655397,
+        "tp": 22695,
+        "fp": 3240,
+        "fn": 11862,
+        "singleton_acc": 0.690519
+      }
+    },
+    "K_100": {
+      "blocker_metrics": {
+        "blocking_recall": 0.738808,
+        "total_candidates": 447103,
+        "avg_candidates": 44.71,
+        "median_candidates": 26,
+        "p95_candidates": 100,
+        "p99_candidates": 100,
+        "max_candidates": 100,
+        "gt_pairs_surviving": 25531,
+        "final_topk_count": 447103
+      },
+      "lr_best_threshold": 0.95,
+      "metrics": {
+        "macro_f0_5": 0.756046,
+        "macro_precision": 0.827311,
+        "macro_recall": 0.650823,
+        "tp": 22500,
+        "fp": 2962,
+        "fn": 12057,
+        "singleton_acc": 0.706619
+      }
+    }
+  },
+  "runtime_sec": 101.2,
+  "peak_rss_mb": 5299.8
+}

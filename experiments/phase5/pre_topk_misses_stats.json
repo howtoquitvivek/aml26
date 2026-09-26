@@ -1,0 +1,14 @@
+{
+  "total_misses": 150612,
+  "cross_script": 42642,
+  "high_name_char_overlap": 111549,
+  "high_addr_char_overlap": 130834,
+  "shared_numbers": 71621,
+  "shared_pincode": 557,
+  "shared_10digit_phone": 3,
+  "exact_name_match": 0,
+  "generic_name": 4638,
+  "india_misses": 82643,
+  "us_misses": 67969,
+  "has_useful_address_digits": 27693
+}

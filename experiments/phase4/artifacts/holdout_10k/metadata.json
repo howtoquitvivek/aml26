@@ -1,0 +1,17 @@
+{
+  "sample_size": 10000,
+  "random_seed": 1337,
+  "source_validation_split": "experiments/val_s1_ids.txt",
+  "country_distribution": {
+    "US": 5998,
+    "India": 4002
+  },
+  "match_count_bin_distribution": {
+    "1": 9441,
+    "0": 559
+  },
+  "creation_timestamp": "2026-09-25T17:32:05.991916Z",
+  "excluded_dev_sample": "experiments/dev_s1_ids.txt",
+  "excluded_count": 1500,
+  "leakage_check_passed": true
+}

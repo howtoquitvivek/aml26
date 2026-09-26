@@ -1,0 +1,509 @@
+{
+  "exact_matches": [
+    {
+      "s1_id": "S1-55344266",
+      "match_id": "S2-197070651",
+      "country": "India",
+      "s1_name": "Raj Investments LLP",
+      "target_name": "Raj Investments LLP",
+      "s1_address": "6(29), C.I.T. Colony, 2Nd Main Road Mylapore, Chennai, Tamil Nadu",
+      "target_address": "6(29), C.I.T. COLONY, 2ND MAIN ROAD MYLAPORE, CHENNAI, Tamil Nadu"
+    },
+    {
+      "s1_id": "S1-731397769",
+      "match_id": "S2-184664253",
+      "country": "US",
+      "s1_name": "Fasoft Midwest Biopharma",
+      "target_name": "fasoft midwest biopharma",
+      "s1_address": "112 Hummingbird Hill Road, Franklin, NC",
+      "target_address": "112 HUMMINGBIRD HILL ROAD, FRANKLIN, NC"
+    },
+    {
+      "s1_id": "S1-24234371",
+      "match_id": "S2-472862697",
+      "country": "US",
+      "s1_name": "Education Committee",
+      "target_name": "Education Committee",
+      "s1_address": "335 Terry Boulevard, Islip, NY",
+      "target_address": "335 TERRY BOULEVARD, ISLIP, NY"
+    },
+    {
+      "s1_id": "S1-379863265",
+      "match_id": "S2-358206813",
+      "country": "US",
+      "s1_name": "Buckles & Smithson",
+      "target_name": "Buckles & Smithson",
+      "s1_address": "336 Stone Drive, Santaquin City (utah Co), UT",
+      "target_address": "336 STONE DRIVE, SANTAQUIN CITY (UTAH CO), UT"
+    },
+    {
+      "s1_id": "S1-945578383",
+      "match_id": "S2-158613473",
+      "country": "US",
+      "s1_name": "Eye Physicians of Elmhurst",
+      "target_name": "Eye Physicians of Elmhurst",
+      "s1_address": "602 Indiana Street, Elmhurst, IL",
+      "target_address": "602 INDIANA STREET, ELMHURST, IL"
+    }
+  ],
+  "legal_suffix_differences": [
+    {
+      "s1_id": "S1-965667",
+      "match_id": "S2-743505751",
+      "country": "US",
+      "s1_name": "Maure Williams Colombier Inc",
+      "target_name": "Maure Williams Colombier",
+      "s1_address": "85 Wayne Avenue, Ticonderoga, NY",
+      "target_address": ""
+    },
+    {
+      "s1_id": "S1-343815751",
+      "match_id": "S2-479876582",
+      "country": "US",
+      "s1_name": "Dahlia Power Reliable Scientific LLC",
+      "target_name": "Dahlia Power Reliable Scientific",
+      "s1_address": "630 45th Terrace, Kansas City, MO",
+      "target_address": "45ND TERRACE, null, KANSAS CITY, MO"
+    },
+    {
+      "s1_id": "S1-102811957",
+      "match_id": "S3-449308785",
+      "country": "US",
+      "s1_name": "Payne Enterprises",
+      "target_name": "Payne Enterprises  LLC",
+      "s1_address": "3315 Fremont Street, Peoria, IL",
+      "target_address": "Fremont St, Peoria, Illinois"
+    },
+    {
+      "s1_id": "S1-18727616",
+      "match_id": "S2-755677256",
+      "country": "US",
+      "s1_name": "Lumay Boral",
+      "target_name": "Lumay Boral Inc.",
+      "s1_address": "1056 Belden Avenue, Akron, OH",
+      "target_address": "1056-1060 BELDEN AVE, PO BOX 8807, AKRON, OH"
+    },
+    {
+      "s1_id": "S1-318373630",
+      "match_id": "S3-804600254",
+      "country": "India",
+      "s1_name": "Red Ventures Private Limited",
+      "target_name": "Red Ventures Private",
+      "s1_address": "Rajasthan, Jaipur, Banipark, Gokul Apartment, E-3A Kanti Chandra Road, G-1",
+      "target_address": "Doro No 316 G-1, Gokul Apartment, E-3a Kanti Chandra Road, Banipark, Subhash Nagar, RJ"
+    }
+  ],
+  "abbreviation_differences": [],
+  "punctuation_differences": [
+    {
+      "s1_id": "S1-731542669",
+      "match_id": "S2-939487122",
+      "country": "US",
+      "s1_name": "Blankenship and Russo Inc",
+      "target_name": "Blankenship & Rnsumo Inc",
+      "s1_address": "1339 E Street, Unit 306, Washington, DC",
+      "target_address": "1339 E ST, WASHINGTON, DC"
+    },
+    {
+      "s1_id": "S1-618624562",
+      "match_id": "S2-14084129",
+      "country": "US",
+      "s1_name": "Foot & Ankle Specialists",
+      "target_name": "FOOT and ANKLE",
+      "s1_address": "117 Daring Paintbrush Cove, San Marcos, TX",
+      "target_address": "DARING PAINTBRUSH COVE, SAN MARCOS, TX"
+    },
+    {
+      "s1_id": "S1-793444283",
+      "match_id": "S3-929731081",
+      "country": "US",
+      "s1_name": "Foot & Ankle Care Associates",
+      "target_name": "Foot and Care Ank1e Associates",
+      "s1_address": "115 Hampton Circle, Georgetown, TX",
+      "target_address": "115 Hampton Cir, Georgetown, Texas"
+    },
+    {
+      "s1_id": "S1-984142916",
+      "match_id": "S2-288445689",
+      "country": "US",
+      "s1_name": "Rushin, Johnson & Nishioka Associates",
+      "target_name": "Rushin, Jisnon and Nishioka Associates",
+      "s1_address": "19414 Woodhill Street, Rialto, CA",
+      "target_address": "##19414 WOODHILL STREET, RIALTO, CA"
+    },
+    {
+      "s1_id": "S1-563321742",
+      "match_id": "S3-12900504",
+      "country": "US",
+      "s1_name": "Couch, Mixon and East Dynamics LLC",
+      "target_name": "Couch, Mixon  & East",
+      "s1_address": "3107 Myers Road, Unit 5, Geneva, OH",
+      "target_address": "3107 Myers Rd, # 5, Geneva Twp, Ohio"
+    }
+  ],
+  "typos": [],
+  "word_order_differences": [
+    {
+      "s1_id": "S1-29845983",
+      "match_id": "S2-648035184",
+      "country": "US",
+      "s1_name": "Hendricks and Flowers Inc",
+      "target_name": "Hendricks and  Flowers Inc",
+      "s1_address": "33 Sleepy Hollow Drive, Danbury, CT",
+      "target_address": "CT, SLEEPY HOLLOW DRIVE, DANBURY"
+    },
+    {
+      "s1_id": "S1-29845983",
+      "match_id": "S3-588502663",
+      "country": "US",
+      "s1_name": "Hendricks and Flowers Inc",
+      "target_name": "Hendricks and Inc Flowers",
+      "s1_address": "33 Sleepy Hollow Drive, Danbury, CT",
+      "target_address": ""
+    },
+    {
+      "s1_id": "S1-730934468",
+      "match_id": "S2-356983532",
+      "country": "US",
+      "s1_name": "Orellana Investments LLC",
+      "target_name": "Orellana Investments Investments Llc",
+      "s1_address": "728 A Quail Avenue, Fl Ground Floor, Geneva, IA",
+      "target_address": ""
+    },
+    {
+      "s1_id": "S1-546142636",
+      "match_id": "S3-200008747",
+      "country": "US",
+      "s1_name": "Crystal Staffing Solutions LLC",
+      "target_name": "Llc Crystal Staffing Solutions",
+      "s1_address": "8706 Kentucky Derby Drive, Waxhaw, NC",
+      "target_address": "870 Kentucky Derby Drive, Waxhaw, North Carolina"
+    },
+    {
+      "s1_id": "S1-274126313",
+      "match_id": "S3-461175723",
+      "country": "US",
+      "s1_name": "Obsidian, LLC",
+      "target_name": "Obsidian, [[LLC]]",
+      "s1_address": "3907 Hamilton Road, Deer Park, WA",
+      "target_address": ""
+    }
+  ],
+  "transliteration_differences": [
+    {
+      "s1_id": "S1-656753428",
+      "match_id": "S2-153058913",
+      "country": "India",
+      "s1_name": "Ss Food Private Limited",
+      "target_name": "एसएस फूड प्राइवेट लिमिटेड",
+      "s1_address": "Af-684, Nandgram Near Mother India Public School. Ph. 989, 9487203, Ghaziabad, Uttar Pradesh",
+      "target_address": "AF-0684, NANDGRAM NEAR MOTHER INDIA PUBLIC SCHOOL. PH. 989, GHAZIABAD, 9487203, उत्तर प्रदेश"
+    },
+    {
+      "s1_id": "S1-656753428",
+      "match_id": "S2-24659151",
+      "country": "India",
+      "s1_name": "Ss Food Private Limited",
+      "target_name": "एसएस फूड प्राइवेट लिमिटेड",
+      "s1_address": "Af-684, Nandgram Near Mother India Public School. Ph. 989, 9487203, Ghaziabad, Uttar Pradesh",
+      "target_address": "AF-0684, Uttar Pradesh, GHAZIABAD, 9487203"
+    },
+    {
+      "s1_id": "S1-656753428",
+      "match_id": "S3-679606215",
+      "country": "India",
+      "s1_name": "Ss Food Private Limited",
+      "target_name": "एसएस फूड प्राइवेट लिमिटेड",
+      "s1_address": "Af-684, Nandgram Near Mother India Public School. Ph. 989, 9487203, Ghaziabad, Uttar Pradesh",
+      "target_address": "Af-684, Ghaziabad, UP"
+    },
+    {
+      "s1_id": "S1-318373630",
+      "match_id": "S2-660036492",
+      "country": "India",
+      "s1_name": "Red Ventures Private Limited",
+      "target_name": "रेड वेंचर्स प्राइवेट लिमिटेड",
+      "s1_address": "Rajasthan, Jaipur, Banipark, Gokul Apartment, E-3A Kanti Chandra Road, G-1",
+      "target_address": "G-1, BANIPARK, JAIPUR, Rajasthan"
+    },
+    {
+      "s1_id": "S1-789009573",
+      "match_id": "S2-383871912",
+      "country": "India",
+      "s1_name": "Hotel Enterprises Limited",
+      "target_name": "होटल एंटरप्राइजेज लिमिटेड",
+      "s1_address": "Wz-187C Shop No.13, 14 Kh. No.47 S/F. Vikaspuri Budhela Village Behind Oxford School, Delhi, West Delhi, Delhi",
+      "target_address": "WZ-187C SHOP NO.13, DELHI, WEST DELHI, Delhi"
+    }
+  ],
+  "address_abbreviations": [
+    {
+      "s1_id": "S1-965667",
+      "match_id": "S3-11291185",
+      "country": "US",
+      "s1_name": "Maure Williams Colombier Inc",
+      "target_name": "maurewilliamscolombier.com",
+      "s1_address": "85 Wayne Avenue, Ticonderoga, NY",
+      "target_address": "Wayne Ave, Ticonderoga Townshiip, New York"
+    },
+    {
+      "s1_id": "S1-102811957",
+      "match_id": "S2-478959098",
+      "country": "US",
+      "s1_name": "Payne Enterprises",
+      "target_name": "Payne Énterprises",
+      "s1_address": "3315 Fremont Street, Peoria, IL",
+      "target_address": "3315 FREMONT ST, PEORIA, IL"
+    },
+    {
+      "s1_id": "S1-102811957",
+      "match_id": "S2-553508714",
+      "country": "US",
+      "s1_name": "Payne Enterprises",
+      "target_name": "Payne Enterpires",
+      "s1_address": "3315 Fremont Street, Peoria, IL",
+      "target_address": "3315 FREMONT ST, PEORIA, IL"
+    },
+    {
+      "s1_id": "S1-102811957",
+      "match_id": "S3-728090388",
+      "country": "US",
+      "s1_name": "Payne Enterprises",
+      "target_name": "Payne Etrepndiels",
+      "s1_address": "3315 Fremont Street, Peoria, IL",
+      "target_address": "3315 Fremont St, Peoria, Illinois"
+    },
+    {
+      "s1_id": "S1-102811957",
+      "match_id": "S3-449308785",
+      "country": "US",
+      "s1_name": "Payne Enterprises",
+      "target_name": "Payne Enterprises  LLC",
+      "s1_address": "3315 Fremont Street, Peoria, IL",
+      "target_address": "Fremont St, Peoria, Illinois"
+    }
+  ],
+  "missing_address_components": [
+    {
+      "s1_id": "S1-965667",
+      "match_id": "S2-681193310",
+      "country": "US",
+      "s1_name": "Maure Williams Colombier Inc",
+      "target_name": "Maure Wilblims Colombier Inc",
+      "s1_address": "85 Wayne Avenue, Ticonderoga, NY",
+      "target_address": ""
+    },
+    {
+      "s1_id": "S1-965667",
+      "match_id": "S2-743505751",
+      "country": "US",
+      "s1_name": "Maure Williams Colombier Inc",
+      "target_name": "Maure Williams Colombier",
+      "s1_address": "85 Wayne Avenue, Ticonderoga, NY",
+      "target_address": ""
+    },
+    {
+      "s1_id": "S1-965667",
+      "match_id": "S3-860443364",
+      "country": "US",
+      "s1_name": "Maure Williams Colombier Inc",
+      "target_name": "Maure Williams Inc Center",
+      "s1_address": "85 Wayne Avenue, Ticonderoga, NY",
+      "target_address": ""
+    },
+    {
+      "s1_id": "S1-29845983",
+      "match_id": "S3-588502663",
+      "country": "US",
+      "s1_name": "Hendricks and Flowers Inc",
+      "target_name": "Hendricks and Inc Flowers",
+      "s1_address": "33 Sleepy Hollow Drive, Danbury, CT",
+      "target_address": ""
+    },
+    {
+      "s1_id": "S1-730934468",
+      "match_id": "S2-356983532",
+      "country": "US",
+      "s1_name": "Orellana Investments LLC",
+      "target_name": "Orellana Investments Investments Llc",
+      "s1_address": "728 A Quail Avenue, Fl Ground Floor, Geneva, IA",
+      "target_address": ""
+    }
+  ],
+  "landmark_style_addresses": [
+    {
+      "s1_id": "S1-656753428",
+      "match_id": "S2-153058913",
+      "country": "India",
+      "s1_name": "Ss Food Private Limited",
+      "target_name": "एसएस फूड प्राइवेट लिमिटेड",
+      "s1_address": "Af-684, Nandgram Near Mother India Public School. Ph. 989, 9487203, Ghaziabad, Uttar Pradesh",
+      "target_address": "AF-0684, NANDGRAM NEAR MOTHER INDIA PUBLIC SCHOOL. PH. 989, GHAZIABAD, 9487203, उत्तर प्रदेश"
+    },
+    {
+      "s1_id": "S1-656753428",
+      "match_id": "S2-24659151",
+      "country": "India",
+      "s1_name": "Ss Food Private Limited",
+      "target_name": "एसएस फूड प्राइवेट लिमिटेड",
+      "s1_address": "Af-684, Nandgram Near Mother India Public School. Ph. 989, 9487203, Ghaziabad, Uttar Pradesh",
+      "target_address": "AF-0684, Uttar Pradesh, GHAZIABAD, 9487203"
+    },
+    {
+      "s1_id": "S1-656753428",
+      "match_id": "S3-679606215",
+      "country": "India",
+      "s1_name": "Ss Food Private Limited",
+      "target_name": "एसएस फूड प्राइवेट लिमिटेड",
+      "s1_address": "Af-684, Nandgram Near Mother India Public School. Ph. 989, 9487203, Ghaziabad, Uttar Pradesh",
+      "target_address": "Af-684, Ghaziabad, UP"
+    },
+    {
+      "s1_id": "S1-86989137",
+      "match_id": "S3-274817120",
+      "country": "India",
+      "s1_name": "Laxmi Golden Investments Private Limited",
+      "target_name": "Laxmi Gbn lnvestments Private Limited",
+      "s1_address": "New Bridge Business Centre'S 11Th Floor, N1 Block Embassy Manyata Business Tech Park, Naga, Wara, Bangalore, Karnataka",
+      "target_address": "New Bridge Bssiness Centre's 11Th Floor, N1 Block Embassy Manyata Business Tech Park, Naga, Wara, Bangalore, ಕರ್ನಾಟಕ"
+    },
+    {
+      "s1_id": "S1-86989137",
+      "match_id": "S3-312496301",
+      "country": "India",
+      "s1_name": "Laxmi Golden Investments Private Limited",
+      "target_name": "Laxmi Golden Investments",
+      "s1_address": "New Bridge Business Centre'S 11Th Floor, N1 Block Embassy Manyata Business Tech Park, Naga, Wara, Bangalore, Karnataka",
+      "target_address": "New Bridge Buisness Centre's 11Th Floor, N1 Block Embassy Manyata Business Tech Park, Naga, Wara, Bangalore, KA"
+    }
+  ],
+  "difficult_matches": [
+    {
+      "s1_id": "S1-965667",
+      "match_id": "S3-775321672",
+      "country": "US",
+      "s1_name": "Maure Williams Colombier Inc",
+      "target_name": "Dréxkor",
+      "s1_address": "85 Wayne Avenue, Ticonderoga, NY",
+      "target_address": "85 Wanye Avenue, Ticonderoga Townshiip, New York",
+      "jaccard_name": 0.0
+    },
+    {
+      "s1_id": "S1-965667",
+      "match_id": "S3-11291185",
+      "country": "US",
+      "s1_name": "Maure Williams Colombier Inc",
+      "target_name": "maurewilliamscolombier.com",
+      "s1_address": "85 Wayne Avenue, Ticonderoga, NY",
+      "target_address": "Wayne Ave, Ticonderoga Townshiip, New York",
+      "jaccard_name": 0.0
+    },
+    {
+      "s1_id": "S1-55344266",
+      "match_id": "S2-249013014",
+      "country": "India",
+      "s1_name": "Raj Investments LLP",
+      "target_name": "ராஜ் இன்வெஸ்ட்மெண்ட்ஸ் எல்எல்பி",
+      "s1_address": "6(29), C.I.T. Colony, 2Nd Main Road Mylapore, Chennai, Tamil Nadu",
+      "target_address": "6(29), C.I.T. COLONY, 2ND MAIN ROAD MYLAPORE, CHENNAI, Tamil Nadu",
+      "jaccard_name": 0.0
+    },
+    {
+      "s1_id": "S1-55344266",
+      "match_id": "S3-384364074",
+      "country": "India",
+      "s1_name": "Raj Investments LLP",
+      "target_name": "ராஜ் இன்வெஸ்ட்மெண்ட்ஸ் எல்எல்பி",
+      "s1_address": "6(29), C.I.T. Colony, 2Nd Main Road Mylapore, Chennai, Tamil Nadu",
+      "target_address": "6(29), C.i.t. Colony, 2Nd Main Road Mylapore, Chennai, தமிழ்நாடு",
+      "jaccard_name": 0.0
+    },
+    {
+      "s1_id": "S1-656753428",
+      "match_id": "S2-153058913",
+      "country": "India",
+      "s1_name": "Ss Food Private Limited",
+      "target_name": "एसएस फूड प्राइवेट लिमिटेड",
+      "s1_address": "Af-684, Nandgram Near Mother India Public School. Ph. 989, 9487203, Ghaziabad, Uttar Pradesh",
+      "target_address": "AF-0684, NANDGRAM NEAR MOTHER INDIA PUBLIC SCHOOL. PH. 989, GHAZIABAD, 9487203, उत्तर प्रदेश",
+      "jaccard_name": 0.0
+    }
+  ],
+  "difficult_non_matches": [
+    {
+      "note": "Distinct S1 businesses with identical name but different addresses",
+      "entity_1": {
+        "id": "S1-740270062",
+        "name": "Delhi Chits Private Limited",
+        "address": "Je-2, Block-J, Gali No.9, Beri Wala Bagh, Hari Nagar, Near Durga Mandir, Delhi, West Delhi, Delhi",
+        "country": "India"
+      },
+      "entity_2": {
+        "id": "S1-339253042",
+        "name": "Delhi Chits Private Limited",
+        "address": "4677, Basement Gali No 49, Reghar Pura, Karol Bagh, Vishnu Mandir, Delhi, Central Delhi, Delhi",
+        "country": "India"
+      }
+    },
+    {
+      "note": "Distinct S1 businesses with identical name but different addresses",
+      "entity_1": {
+        "id": "S1-75161961",
+        "name": "Red Deli!",
+        "address": "53 Harmony Lane, Cheektowaga, NY",
+        "country": "US"
+      },
+      "entity_2": {
+        "id": "S1-211919030",
+        "name": "Red Deli!",
+        "address": "21 Wilbur Street, Everett, MA",
+        "country": "US"
+      }
+    },
+    {
+      "note": "Distinct S1 businesses with identical name but different addresses",
+      "entity_1": {
+        "id": "S1-363150886",
+        "name": "Hari Constructions Pvt Ltd",
+        "address": "1482/24, Situated At Gali No-24 Naiwal Karol Bagh, Delhi, Central Delhi, Delhi",
+        "country": "India"
+      },
+      "entity_2": {
+        "id": "S1-109932442",
+        "name": "Hari Constructions Pvt Ltd",
+        "address": "Block-G Gali No-11 Shop No-1 Ratia Marg, New Delhi, South Delhi, Delhi",
+        "country": "India"
+      }
+    },
+    {
+      "note": "Distinct S1 businesses with identical name but different addresses",
+      "entity_1": {
+        "id": "S1-836358069",
+        "name": "Commission on Veterans Affairs",
+        "address": "2138 Walnut Court, TN, Sevierville",
+        "country": "US"
+      },
+      "entity_2": {
+        "id": "S1-412309680",
+        "name": "Commission on Veterans Affairs",
+        "address": "AZ, Unit 2136, Mesa, 108 Greenfield Road",
+        "country": "US"
+      }
+    },
+    {
+      "note": "Distinct S1 businesses with identical name but different addresses",
+      "entity_1": {
+        "id": "S1-374920705",
+        "name": "Vanguard",
+        "address": "MD, 10910 Picasso Lane, Potomac",
+        "country": "US"
+      },
+      "entity_2": {
+        "id": "S1-90286632",
+        "name": "Vanguard",
+        "address": "NC, Apex, 1204 Evian Court",
+        "country": "US"
+      }
+    }
+  ]
+}

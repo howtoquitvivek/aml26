@@ -1,0 +1,514 @@
+{
+  "benchmark_metadata": {
+    "sample_size": 1000,
+    "execution_time_seconds": 19.42,
+    "timestamp": "2026-09-25T08:25:41Z"
+  },
+  "phase_3a_blocking": {
+    "comparison_table": [
+      {
+        "strategy": "1. Country Only",
+        "blocking_recall": 100.0,
+        "avg_candidates_per_s1": 5364570.6,
+        "median_candidates": 6186873.0,
+        "p95_candidates": 6186873.0,
+        "total_candidate_pairs_full_val": 1183902323766,
+        "reduction_ratio_pct": 48.03,
+        "notes": "100% recall (0 cross-country matches in ground truth), but leaves ~5.36M candidates/S1."
+      },
+      {
+        "strategy": "2. Exact Normalized Name",
+        "blocking_recall": 20.49,
+        "avg_candidates_per_s1": 1.12,
+        "median_candidates": 1.0,
+        "p95_candidates": 4.0,
+        "p99_candidates": 10.009999999999991,
+        "sample_candidate_pairs": 1125,
+        "extrapolated_full_val_pairs": 248268,
+        "reduction_ratio_pct": 99.999989,
+        "runtime_seconds": 0.006
+      },
+      {
+        "strategy": "3. Token-Based (Canonical)",
+        "blocking_recall": 40.01,
+        "avg_candidates_per_s1": 2.95,
+        "median_candidates": 2.0,
+        "p95_candidates": 9.0,
+        "p99_candidates": 30.019999999999982,
+        "sample_candidate_pairs": 2950,
+        "extrapolated_full_val_pairs": 651014,
+        "reduction_ratio_pct": 99.999971,
+        "runtime_seconds": 0.005
+      },
+      {
+        "strategy": "4. Character Prefix",
+        "blocking_recall": 41.03,
+        "avg_candidates_per_s1": 311.66,
+        "median_candidates": 433.0,
+        "p95_candidates": 500.0,
+        "p99_candidates": 500.0,
+        "sample_candidate_pairs": 311661,
+        "extrapolated_full_val_pairs": 68778284,
+        "reduction_ratio_pct": 99.99698,
+        "runtime_seconds": 0.06
+      },
+      {
+        "strategy": "5. Address-Assisted",
+        "blocking_recall": 53.88,
+        "avg_candidates_per_s1": 2.58,
+        "median_candidates": 2.0,
+        "p95_candidates": 7.0,
+        "p99_candidates": 12.0,
+        "sample_candidate_pairs": 2584,
+        "extrapolated_full_val_pairs": 570244,
+        "reduction_ratio_pct": 99.999975,
+        "runtime_seconds": 0.015
+      },
+      {
+        "strategy": "6. Combined Multi-Strategy Union",
+        "blocking_recall": 75.87,
+        "avg_candidates_per_s1": 80.57,
+        "median_candidates": 100.0,
+        "p95_candidates": 100.0,
+        "p99_candidates": 507.02,
+        "sample_candidate_pairs": 80572,
+        "extrapolated_full_val_pairs": 17780870,
+        "reduction_ratio_pct": 99.999219,
+        "runtime_seconds": 0.053
+      }
+    ]
+  },
+  "phase_3b_matching": {
+    "score_distribution": {
+      "true_matches": {
+        "count": 2581,
+        "mean": 0.8237,
+        "median": 0.9385,
+        "p10": 0.5379,
+        "p25": 0.675,
+        "p75": 0.9714,
+        "p90": 0.9933
+      },
+      "false_candidates": {
+        "count": 77991,
+        "mean": 0.1413,
+        "median": 0.113,
+        "p90": 0.2739,
+        "p95": 0.3583,
+        "p99": 0.65
+      }
+    },
+    "best_configuration": {
+      "config": "conservative_precision",
+      "threshold": 0.7,
+      "macro_f0_5": 0.757,
+      "macro_precision": 0.8639,
+      "macro_recall": 0.5814,
+      "singleton_accuracy": 0.9492,
+      "singleton_false_merges": 3,
+      "aggregate_tp": 1886,
+      "aggregate_fp": 72,
+      "aggregate_fn": 1516
+    },
+    "grid_evaluations": [
+      {
+        "config": "conservative_precision",
+        "threshold": 0.7,
+        "macro_f0_5": 0.757,
+        "macro_precision": 0.8639,
+        "macro_recall": 0.5814,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1886,
+        "aggregate_fp": 72,
+        "aggregate_fn": 1516
+      },
+      {
+        "config": "balanced",
+        "threshold": 0.7,
+        "macro_f0_5": 0.7481,
+        "macro_precision": 0.8567,
+        "macro_recall": 0.57,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1844,
+        "aggregate_fp": 72,
+        "aggregate_fn": 1558
+      },
+      {
+        "config": "conservative_precision",
+        "threshold": 0.75,
+        "macro_f0_5": 0.727,
+        "macro_precision": 0.8445,
+        "macro_recall": 0.539,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1729,
+        "aggregate_fp": 72,
+        "aggregate_fn": 1673
+      },
+      {
+        "config": "name_heavy",
+        "threshold": 0.7,
+        "macro_f0_5": 0.7237,
+        "macro_precision": 0.8395,
+        "macro_recall": 0.5379,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1724,
+        "aggregate_fp": 96,
+        "aggregate_fn": 1678
+      },
+      {
+        "config": "balanced",
+        "threshold": 0.75,
+        "macro_f0_5": 0.723,
+        "macro_precision": 0.8415,
+        "macro_recall": 0.5327,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1710,
+        "aggregate_fp": 71,
+        "aggregate_fn": 1692
+      },
+      {
+        "config": "name_heavy",
+        "threshold": 0.75,
+        "macro_f0_5": 0.7062,
+        "macro_precision": 0.8295,
+        "macro_recall": 0.5105,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1624,
+        "aggregate_fp": 76,
+        "aggregate_fn": 1778
+      },
+      {
+        "config": "conservative_precision",
+        "threshold": 0.8,
+        "macro_f0_5": 0.7059,
+        "macro_precision": 0.8279,
+        "macro_recall": 0.5131,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1633,
+        "aggregate_fp": 71,
+        "aggregate_fn": 1769
+      },
+      {
+        "config": "balanced",
+        "threshold": 0.8,
+        "macro_f0_5": 0.6987,
+        "macro_precision": 0.8229,
+        "macro_recall": 0.5042,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1601,
+        "aggregate_fp": 71,
+        "aggregate_fn": 1801
+      },
+      {
+        "config": "name_heavy",
+        "threshold": 0.8,
+        "macro_f0_5": 0.6934,
+        "macro_precision": 0.8195,
+        "macro_recall": 0.4956,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1573,
+        "aggregate_fp": 71,
+        "aggregate_fn": 1829
+      },
+      {
+        "config": "conservative_precision",
+        "threshold": 0.85,
+        "macro_f0_5": 0.6874,
+        "macro_precision": 0.8155,
+        "macro_recall": 0.4888,
+        "singleton_accuracy": 0.9492,
+        "singleton_false_merges": 3,
+        "aggregate_tp": 1549,
+        "aggregate_fp": 71,
+        "aggregate_fn": 1853
+      }
+    ],
+    "predicted_match_count_distribution": {
+      "0": 163,
+      "1": 243,
+      "2": 264,
+      "3": 202,
+      "4": 78,
+      "5": 34,
+      "6": 13,
+      "7": 3
+    },
+    "false_positive_examples": [
+      {
+        "s1_id": "S1-351910100",
+        "s1_name": "Pediatric Dental Partners",
+        "s1_address": "909 Beach Drive, Oak Island, NC",
+        "false_id": "S2-753909582",
+        "false_name": "Pediatric Dental  Partners LLC",
+        "false_address": "1646 MORNINGSIDE DR, BURLINGTON, NC",
+        "score": 0.922,
+        "features": {
+          "country_match": 1.0,
+          "name_exact": 0.0,
+          "name_canonical_exact": 1.0,
+          "name_token_jaccard": 1.0,
+          "name_char_jaccard": 0.88,
+          "name_len_diff_ratio": 0.14,
+          "addr_missing": 0.0,
+          "addr_exact": 0.0,
+          "addr_token_jaccard": 0.22,
+          "addr_char_jaccard": 0.06,
+          "addr_numeric_jaccard": 0.0,
+          "addr_len_diff_ratio": 0.19
+        }
+      },
+      {
+        "s1_id": "S1-351910100",
+        "s1_name": "Pediatric Dental Partners",
+        "s1_address": "909 Beach Drive, Oak Island, NC",
+        "false_id": "S2-276798514",
+        "false_name": "Pediatric Dental Partners,  Corp",
+        "false_address": "08 Edgewood Dr, CHINA GROVE, NC",
+        "score": 0.92,
+        "features": {
+          "country_match": 1.0,
+          "name_exact": 0.0,
+          "name_canonical_exact": 1.0,
+          "name_token_jaccard": 1.0,
+          "name_char_jaccard": 0.84,
+          "name_len_diff_ratio": 0.17,
+          "addr_missing": 0.0,
+          "addr_exact": 0.0,
+          "addr_token_jaccard": 0.2,
+          "addr_char_jaccard": 0.07,
+          "addr_numeric_jaccard": 0.0,
+          "addr_len_diff_ratio": 0.09
+        }
+      },
+      {
+        "s1_id": "S1-514360031",
+        "s1_name": "Creative Consulting Private Limited",
+        "s1_address": "1St Floor, Sana Bazar, Near Old Kseb, Ponani, 5-241/1, Kerala, Malappuram, Malapuram",
+        "false_id": "S3-217542404",
+        "false_name": "CREATIVE CONSULTING PRIVATE LIMITED",
+        "false_address": "",
+        "score": 0.85,
+        "features": {
+          "country_match": 1.0,
+          "name_exact": 1.0,
+          "name_canonical_exact": 1.0,
+          "name_token_jaccard": 1.0,
+          "name_char_jaccard": 1.0,
+          "name_len_diff_ratio": 0.0,
+          "addr_missing": 1.0,
+          "addr_exact": 0.0,
+          "addr_token_jaccard": 0.0,
+          "addr_char_jaccard": 0.0,
+          "addr_numeric_jaccard": 0.0,
+          "addr_len_diff_ratio": 1.0
+        }
+      },
+      {
+        "s1_id": "S1-855895108",
+        "s1_name": "Cascade",
+        "s1_address": "11173 Kinsley Street, Eden Prairie, MN",
+        "false_id": "S3-694936487",
+        "false_name": "cascade, corp",
+        "false_address": "",
+        "score": 0.85,
+        "features": {
+          "country_match": 1.0,
+          "name_exact": 0.0,
+          "name_canonical_exact": 1.0,
+          "name_token_jaccard": 1.0,
+          "name_char_jaccard": 0.56,
+          "name_len_diff_ratio": 0.42,
+          "addr_missing": 1.0,
+          "addr_exact": 0.0,
+          "addr_token_jaccard": 0.0,
+          "addr_char_jaccard": 0.0,
+          "addr_numeric_jaccard": 0.0,
+          "addr_len_diff_ratio": 1.0
+        }
+      },
+      {
+        "s1_id": "S1-855895108",
+        "s1_name": "Cascade",
+        "s1_address": "11173 Kinsley Street, Eden Prairie, MN",
+        "false_id": "S3-542824574",
+        "false_name": "#cascade",
+        "false_address": "",
+        "score": 0.85,
+        "features": {
+          "country_match": 1.0,
+          "name_exact": 1.0,
+          "name_canonical_exact": 1.0,
+          "name_token_jaccard": 1.0,
+          "name_char_jaccard": 1.0,
+          "name_len_diff_ratio": 0.0,
+          "addr_missing": 1.0,
+          "addr_exact": 0.0,
+          "addr_token_jaccard": 0.0,
+          "addr_char_jaccard": 0.0,
+          "addr_numeric_jaccard": 0.0,
+          "addr_len_diff_ratio": 1.0
+        }
+      },
+      {
+        "s1_id": "S1-855895108",
+        "s1_name": "Cascade",
+        "s1_address": "11173 Kinsley Street, Eden Prairie, MN",
+        "false_id": "S2-289072087",
+        "false_name": "CASCADE PRIVATE INC",
+        "false_address": "",
+        "score": 0.85,
+        "features": {
+          "country_match": 1.0,
+          "name_exact": 0.0,
+          "name_canonical_exact": 1.0,
+          "name_token_jaccard": 1.0,
+          "name_char_jaccard": 0.33,
+          "name_len_diff_ratio": 0.63,
+          "addr_missing": 1.0,
+          "addr_exact": 0.0,
+          "addr_token_jaccard": 0.0,
+          "addr_char_jaccard": 0.0,
+          "addr_numeric_jaccard": 0.0,
+          "addr_len_diff_ratio": 1.0
+        }
+      },
+      {
+        "s1_id": "S1-292649689",
+        "s1_name": "Global Services Private Limited",
+        "s1_address": "2-Floor, 2/D Panditya Road, Kolkata, Kolkata, Howrah, West Bengal",
+        "false_id": "S2-133800658",
+        "false_name": "Global Private Limited [Services]",
+        "false_address": "",
+        "score": 0.85,
+        "features": {
+          "country_match": 1.0,
+          "name_exact": 0.0,
+          "name_canonical_exact": 1.0,
+          "name_token_jaccard": 1.0,
+          "name_char_jaccard": 0.73,
+          "name_len_diff_ratio": 0.0,
+          "addr_missing": 1.0,
+          "addr_exact": 0.0,
+          "addr_token_jaccard": 0.0,
+          "addr_char_jaccard": 0.0,
+          "addr_numeric_jaccard": 0.0,
+          "addr_len_diff_ratio": 1.0
+        }
+      },
+      {
+        "s1_id": "S1-292649689",
+        "s1_name": "Global Services Private Limited",
+        "s1_address": "2-Floor, 2/D Panditya Road, Kolkata, Kolkata, Howrah, West Bengal",
+        "false_id": "S3-52689770",
+        "false_name": "Global Services  Private Limited",
+        "false_address": "",
+        "score": 0.85,
+        "features": {
+          "country_match": 1.0,
+          "name_exact": 1.0,
+          "name_canonical_exact": 1.0,
+          "name_token_jaccard": 1.0,
+          "name_char_jaccard": 1.0,
+          "name_len_diff_ratio": 0.0,
+          "addr_missing": 1.0,
+          "addr_exact": 0.0,
+          "addr_token_jaccard": 0.0,
+          "addr_char_jaccard": 0.0,
+          "addr_numeric_jaccard": 0.0,
+          "addr_len_diff_ratio": 1.0
+        }
+      }
+    ],
+    "false_negative_examples": [
+      {
+        "s1_id": "S1-931374745",
+        "s1_name": "Indransh Cancer Private Limited",
+        "s1_address": "554, Moti Nagar West Dr Habib Marg, Jaipur, Rajasthan",
+        "missed_id": "S3-229181579",
+        "missed_name": "Indranshcancer.Com",
+        "missed_address": "554, Jaipur, \u0930\u093e\u091c\u0938\u094d\u0925\u093e\u0928",
+        "in_candidates": true,
+        "score": 0.392
+      },
+      {
+        "s1_id": "S1-947183627",
+        "s1_name": "Malappuram Gupta Private Limited",
+        "s1_address": "Room No. 13/193-N, 3Rd Floor Kp Mall, Manjeri Road, Mankada, Malappuram, Malapuram, Kerala",
+        "missed_id": "S3-402947654",
+        "missed_name": "Malappuram Gaap Private Limited",
+        "missed_address": "Room No. 13/193-N, 3Rd Floor Kp Mall, Manjeri Road, Mankada, Malappuram, Malapuram, \u0d15\u0d47\u0d30\u0d33\u0d02",
+        "in_candidates": true,
+        "score": 0.691
+      },
+      {
+        "s1_id": "S1-947183627",
+        "s1_name": "Malappuram Gupta Private Limited",
+        "s1_address": "Room No. 13/193-N, 3Rd Floor Kp Mall, Manjeri Road, Mankada, Malappuram, Malapuram, Kerala",
+        "missed_id": "S3-591878938",
+        "missed_name": "Malappuram Gupta Pvrrae Limited",
+        "missed_address": "Room No. 13/193-N, Malappuram, Malapuram, KL",
+        "in_candidates": true,
+        "score": 0.681
+      },
+      {
+        "s1_id": "S1-947183627",
+        "s1_name": "Malappuram Gupta Private Limited",
+        "s1_address": "Room No. 13/193-N, 3Rd Floor Kp Mall, Manjeri Road, Mankada, Malappuram, Malapuram, Kerala",
+        "missed_id": "S3-858384805",
+        "missed_name": "Wexwexnovi Sys t/a Malappuram Gupta Private Limited",
+        "missed_address": "Room No. 13/193-N, 3Rd Floor Kp Mall, Manjeri Road, Mankada, Kerala, Malappuram, Malapuram",
+        "in_candidates": false,
+        "score": null
+      },
+      {
+        "s1_id": "S1-764005774",
+        "s1_name": "Big Tattoo",
+        "s1_address": "11 Echo Court, Unit APARTMENT 18, Vernon Hills, IL",
+        "missed_id": "S2-14723531",
+        "missed_name": "Big Tattoo C\u00e9nter",
+        "missed_address": "11 ECHO CT, VERNON HILLS CITTY, IL",
+        "in_candidates": true,
+        "score": 0.583
+      },
+      {
+        "s1_id": "S1-764005774",
+        "s1_name": "Big Tattoo",
+        "s1_address": "11 Echo Court, Unit APARTMENT 18, Vernon Hills, IL",
+        "missed_id": "S3-107227200",
+        "missed_name": "Avicalo DBA: Big Tattoo",
+        "missed_address": "11 Echo Court, Unit APARTMENT 18, Vernon Hills, IL",
+        "in_candidates": false,
+        "score": null
+      },
+      {
+        "s1_id": "S1-764005774",
+        "s1_name": "Big Tattoo",
+        "s1_address": "11 Echo Court, Unit APARTMENT 18, Vernon Hills, IL",
+        "missed_id": "S2-121293640",
+        "missed_name": "Ariazetade1ta",
+        "missed_address": "11 ECHO CT, VERNON HILLS CITTY, IL",
+        "in_candidates": false,
+        "score": null
+      },
+      {
+        "s1_id": "S1-854246466",
+        "s1_name": "Jms College",
+        "s1_address": "Buliding No 515G Vard Vi Sreemoolanagaram P.O Aluva, Sreemoolanagaram, Ernakulam, Kerala",
+        "missed_id": "S3-94384651",
+        "missed_name": "Jms Cologe",
+        "missed_address": "Buliding No 515G Vard Vi Sreemoolanagaram P.o Aluva, Sreemoolanagaram, Ernakulam, \u0d15\u0d47\u0d30\u0d33\u0d02",
+        "in_candidates": false,
+        "score": null
+      }
+    ]
+  }
+}

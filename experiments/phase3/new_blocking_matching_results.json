@@ -1,0 +1,10 @@
+{
+  "macro_f0_5": 0.637944,
+  "macro_precision": 0.710031,
+  "macro_recall": 0.524263,
+  "aggregate_tp": 2768,
+  "aggregate_fp": 885,
+  "aggregate_fn": 2446,
+  "singleton_accuracy": 0.440476,
+  "total_time": 233.5
+}

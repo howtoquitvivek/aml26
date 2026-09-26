@@ -1,0 +1,15 @@
+{
+  "sample_size": 5000,
+  "random_seed": 9999,
+  "country_distribution": {
+    "US": 2999,
+    "India": 2001
+  },
+  "match_count_bin_distribution": {
+    "1": 4721,
+    "0": 279
+  },
+  "creation_timestamp": "2026-09-25T17:56:19.004432+00:00",
+  "excluded_dev_sample": "experiments/dev_s1_ids.txt",
+  "leakage_check_passed": true
+}

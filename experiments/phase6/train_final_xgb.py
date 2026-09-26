@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+import sys
+import os
+import gc
+import json
+import numpy as np
+import time
+import collections
+import random
+import resource
+from xgboost import XGBClassifier
+
+sys.path.insert(0, os.path.abspath("."))
+import experiments.phase3.run_dev_benchmark as rdb
+from experiments.phase4.ablate_lr_blocking import extract_lr_features, query_custom_s1
+
+def load_persisted_index(country: str):
+    idx_dir = f"experiments/phase4/artifacts/indexes/notwotok_keye_v1/{country.lower()}"
+    if not os.path.exists(idx_dir):
+        raise FileNotFoundError(f"Missing index for {country} at {idx_dir}")
+        
+    print(f"[{country}] Loading persisted index...")
+    t0 = time.time()
+    with open(f"{idx_dir}/cand_ids.json") as f: cand_ids = json.load(f)
+    with open(f"{idx_dir}/idx_exact.json") as f: idx_exact = json.load(f)
+    with open(f"{idx_dir}/idx_canon.json") as f: idx_canon = json.load(f)
+    with open(f"{idx_dir}/idx_addr_old.json") as f: idx_addr_old = json.load(f)
+    with open(f"{idx_dir}/idx_key_b.json") as f: idx_key_b = json.load(f)
+    with open(f"{idx_dir}/idx_key_e.json") as f: idx_key_e = json.load(f)
+    idx_two_tok = {}
+    print(f"[{country}] Index loaded in {time.time()-t0:.1f}s")
+    
+    return (cand_ids, idx_exact, idx_canon, idx_two_tok, idx_addr_old, idx_key_b, idx_key_e)
+
+def get_peak_rss():
+    """Returns peak memory usage in MB."""
+    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+
+def main():
+    t_start = time.time()
+    
+    print("Loading datasets...")
+    with open("experiments/train_s1_ids.txt") as f:
+        train_ids = sorted([line.strip() for line in f if line.strip()])
+        
+    with open("experiments/val_s1_ids.txt") as f:
+        val_ids = {line.strip() for line in f if line.strip()}
+        
+    # Sample 50,000 deterministic S1 records
+    rng = random.Random(42)
+    selected_s1s = set(rng.sample(train_ids, 50000))
+    
+    # Assert no leakage
+    leakage = selected_s1s.intersection(val_ids)
+    assert len(leakage) == 0, f"FATAL LEAKAGE: {len(leakage)} validation IDs in training sample!"
+    
+    # Extract candidate pairs
+    val_gt = rdb.load_gt_for_ids(selected_s1s)
+    s1_data = rdb.load_s1_records(selected_s1s)
+    
+    unique_countries = sorted({r["country"] for r in s1_data.values()})
+    records = []
+    
+    for country in unique_countries:
+        country_s1 = {sid: r for sid, r in s1_data.items() if r["country"] == country}
+        idx_tuple = load_persisted_index(country)
+        cand_ids = idx_tuple[0]
+        
+        pass1 = {}
+        needed_encoded = set()
+        
+        print(f"[{country}] Generating K=100 candidates for {len(country_s1)} entities...")
+        for sid, s1 in country_s1.items():
+            all_cands, ranked_budget, _ = query_custom_s1(s1, 100, *idx_tuple, "CFG1_NoTwoTok_KeyE")
+            budget_eids = []
+            for i in ranked_budget:
+                enc = cand_ids[i]
+                needed_encoded.add(enc)
+                budget_eids.append(rdb.decode_id(enc))
+            pass1[sid] = budget_eids
+            
+        needed_eids_str = {rdb.decode_id(enc) for enc in needed_encoded}
+        del idx_tuple
+        gc.collect()
+        
+        print(f"[{country}] Loading candidate metadata...")
+        cand_meta = {}
+        for fpath in (rdb.S2_FILE, rdb.S3_FILE):
+            with open(fpath, encoding="utf-8") as f:
+                next(f)
+                for line in f:
+                    parts = line.rstrip("\n").split("\t")
+                    if len(parts) >= 4:
+                        eid = parts[0].strip()
+                        if eid in needed_eids_str:
+                            cand_meta[eid] = {"name": parts[1].strip(), "address": parts[2].strip()}
+                    if len(cand_meta) >= len(needed_eids_str):
+                        break
+                        
+        print(f"[{country}] Extracting features...")
+        for sid, eids in pass1.items():
+            s1 = country_s1[sid]
+            gt_set = val_gt.get(sid, set())
+            for cid in eids:
+                cm = cand_meta.get(cid)
+                if not cm: continue
+                vec = extract_lr_features(s1["name"], s1["address"], cm["name"], cm["address"], cid, country)
+                records.append({
+                    "vec": vec,
+                    "label": 1 if cid in gt_set else 0
+                })
+        del pass1, cand_meta
+        gc.collect()
+        
+    print("\nPreparing feature matrix...")
+    X_train = np.array([r["vec"] for r in records], dtype=np.float32)
+    y_train = np.array([r["label"] for r in records], dtype=bool)
+    
+    total_pairs = len(y_train)
+    positive_count = sum(y_train)
+    negative_count = total_pairs - positive_count
+    
+    print(f"Total Candidate Pairs: {total_pairs}")
+    print(f"Positives (GT Match): {positive_count}")
+    print(f"Negatives (False Cand): {negative_count}")
+    
+    pos_weight = negative_count / positive_count
+    print(f"Globally Calculated scale_pos_weight: {pos_weight:.4f}")
+    
+    print("\nTraining XGBoost Classifier...")
+    t_train = time.time()
+    clf = XGBClassifier(
+        n_estimators=100, 
+        max_depth=6, 
+        learning_rate=0.1, 
+        random_state=42, 
+        eval_metric='logloss', 
+        scale_pos_weight=pos_weight
+    )
+    clf.fit(X_train, y_train)
+    train_time = time.time() - t_train
+    print(f"Training completed in {train_time:.2f}s")
+    
+    print("\nFeature Importances:")
+    for feat, weight in zip([
+        "name_exact", "canon_exact", "name_tok_jac", "name_char_jac", "name_len_diff",
+        "addr_exact", "addr_missing", "addr_tok_jac", "addr_char_jac", "addr_num_jac",
+        "addr_len_diff", "postal_overlap", "salient_addr_jac", "is_s2", "country_match"
+    ], clf.feature_importances_):
+        print(f"  {feat:<15}: {weight:.4f}")
+        
+    os.makedirs("experiments/phase6/artifacts", exist_ok=True)
+    model_path = "experiments/phase6/artifacts/final_xgb_model.ubj"
+    clf.save_model(model_path)
+    print(f"Model saved to {model_path}")
+    
+    total_time = time.time() - t_start
+    peak_ram = get_peak_rss()
+    
+    res = {
+        "s1_count": 50000,
+        "candidate_pairs": int(total_pairs),
+        "positive_pairs": int(positive_count),
+        "negative_pairs": int(negative_count),
+        "scale_pos_weight": float(pos_weight),
+        "training_time_seconds": round(train_time, 2),
+        "total_runtime_seconds": round(total_time, 2),
+        "peak_ram_mb": round(peak_ram, 1),
+        "model_path": model_path
+    }
+    
+    with open("results/phase6/final_training_metadata.json", "w") as f:
+        json.dump(res, f, indent=2)
+        
+    print("\n--- FINAL TRAINING METADATA ---")
+    print(json.dumps(res, indent=2))
+
+if __name__ == "__main__":
+    main()

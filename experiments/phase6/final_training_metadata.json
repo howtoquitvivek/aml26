@@ -1,0 +1,11 @@
+{
+  "s1_count": 50000,
+  "candidate_pairs": 2255343,
+  "positive_pairs": 128893,
+  "negative_pairs": 2126450,
+  "scale_pos_weight": 16.497792742817687,
+  "training_time_seconds": 6.62,
+  "total_runtime_seconds": 213.15,
+  "peak_ram_mb": 6177.6,
+  "model_path": "experiments/phase6/artifacts/final_xgb_model.ubj"
+}
