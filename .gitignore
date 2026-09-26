@@ -41,3 +41,9 @@ output/*.zip
 # Generated blocking indexes
 experiments/phase4/artifacts/indexes/
 experiments/phase7/*_results.json
+.sagemaker_venv/
+experiments/final_hardening/index/
+
+experiments/final_hardening/index/
+experiments/final_hardening/missed_gt.json
+nohup.out

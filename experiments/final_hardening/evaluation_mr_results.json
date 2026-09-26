@@ -1,0 +1,20 @@
+{
+  "metrics": {
+    "macro_f0_5": 0.8015562082737084,
+    "macro_precision": 0.8202804458069165,
+    "macro_recall": 0.804268253968254,
+    "total_source1_entities": 1500,
+    "singletons_total": 84,
+    "singletons_correct": 36,
+    "singleton_accuracy": 0.42857142857142855,
+    "non_singleton_entities": 1416,
+    "non_singleton_macro_f0_5": 0.8236824240187589,
+    "aggregate_tp": 4337,
+    "aggregate_fp": 941,
+    "aggregate_fn": 877
+  },
+  "avg_candidates_pre_k": 168.93466666666666,
+  "avg_candidates_post_k": 141.79333333333332,
+  "threshold": 0.9,
+  "max_k": 300
+}

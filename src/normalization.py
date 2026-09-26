@@ -204,3 +204,23 @@ def get_character_ngrams(text: str, n: int = 3) -> Set[str]:
     if len(cleaned) < n:
         return {cleaned} if cleaned else set()
     return {cleaned[i : i + n] for i in range(len(cleaned) - n + 1)}
+
+GENERIC_ADDR_TERMS = {
+    "road", "street", "avenue", "boulevard", "drive", "highway", "lane", "court",
+    "circle", "parkway", "terrace", "place", "square", "way", "apartment", "suite",
+    "floor", "building", "number", "opposite", "near", "adjacent", "sector", "phase",
+    "khasra", "rue", "route"
+}
+
+def extract_address_features(addr: str) -> Tuple[List[str], List[str]]:
+    if not addr:
+        return [], []
+    tokens = normalize_address(addr).split()
+    nums   = [t for t in tokens if t.isdigit() and len(t) >= 2]
+    postal = [n for n in nums if len(n) in (5, 6)]
+    other  = [n for n in nums if len(n) not in (5, 6)]
+    salient_alphas = [
+        t for t in tokens
+        if t.isalpha() and len(t) >= 4 and t not in GENERIC_ADDR_TERMS
+    ]
+    return postal + other, salient_alphas
