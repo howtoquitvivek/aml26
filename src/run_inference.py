@@ -20,6 +20,7 @@ GLOBAL_CG_MR = None
 
 def process_chunk(chunk, threshold, max_k):
     results = {}
+    candidates = {}
     for sid, s1 in chunk:
         cands = GLOBAL_CG.get_candidates(s1["name"], s1["address"], s1["country"])
         mr_cands_set = GLOBAL_CG_MR.get_candidates(s1["name"], s1["address"], s1["country"])
@@ -50,6 +51,9 @@ def process_chunk(chunk, threshold, max_k):
             )
             features.append(feat)
             
+        c_ids = [c.split("#")[1] for c in valid_cands]
+        candidates[sid] = c_ids
+        
         if not features:
             results[sid] = set()
             continue
@@ -64,7 +68,7 @@ def process_chunk(chunk, threshold, max_k):
                 
         results[sid] = pred_cands
         
-    return results
+    return results, candidates
 
 def load_country_metadata(s2_path, s3_path, country):
     print(f"Loading candidate metadata for {country}...")
@@ -84,26 +88,12 @@ def load_country_metadata(s2_path, s3_path, country):
                     }
     return cand_meta
 
-def run_inference(s1_path, s2_path, s3_path, index_dir, out_csv, model_path, threshold=0.98, max_k=300):
+def run_inference(s1_path, s2_path, s3_path, index_dir, out_csv, cand_csv, model_path, threshold=0.98, max_k=300):
     global GLOBAL_CLF, GLOBAL_CAND_META, GLOBAL_CG, GLOBAL_CG_MR
     
     t0 = time.time()
     
-    # 1. Build indexes if they don't exist
-    if not os.path.exists(index_dir):
-        print(f"Index directory {index_dir} not found. Building indexes...")
-        os.makedirs(index_dir)
-        build_all_indexes(s2_path, s3_path, index_dir)
-        build_all_indexes_mr(s2_path, s3_path, index_dir)
-    else:
-        print(f"Using existing indexes in {index_dir}...")
-        
-    print(f"Loading XGBoost model from {model_path}...")
-    GLOBAL_CLF = xgb.XGBClassifier()
-    GLOBAL_CLF.load_model(model_path)
-    GLOBAL_CLF.set_params(n_jobs=1)
-    
-    # Parse S1 records by country
+    # Parse S1 records by country first to know what indexes we need
     print(f"Parsing S1 test records from {s1_path}...")
     s1_by_country = collections.defaultdict(list)
     with open(s1_path, encoding="utf-8") as f:
@@ -118,11 +108,50 @@ def run_inference(s1_path, s2_path, s3_path, index_dir, out_csv, model_path, thr
                     "country": country
                 }))
                 
+    # 1. Build indexes if they don't exist or are incomplete
+    missing_indexes = False
+    if not os.path.exists(index_dir):
+        missing_indexes = True
+    else:
+        if not os.path.exists(os.path.join(index_dir, "index_manifest.json")):
+            missing_indexes = True
+        if not os.path.exists(os.path.join(index_dir, "index_manifest_mr.json")):
+            missing_indexes = True
+            
+        for country in s1_by_country.keys():
+            if not os.path.exists(os.path.join(index_dir, f"cand_ids_{country}.json")): missing_indexes = True
+            if not os.path.exists(os.path.join(index_dir, f"idx_{country}.pkl")): missing_indexes = True
+            if not os.path.exists(os.path.join(index_dir, f"mr_cand_ids_{country}.json")): missing_indexes = True
+            if not os.path.exists(os.path.join(index_dir, f"mr_idx_{country}.pkl")): missing_indexes = True
+
+    if missing_indexes:
+        print(f"Indexes in {index_dir} missing or incomplete. Building indexes...")
+        os.makedirs(index_dir, exist_ok=True)
+        build_all_indexes(s2_path, s3_path, index_dir)
+        build_all_indexes_mr(s2_path, s3_path, index_dir)
+    else:
+        print(f"Using complete existing indexes in {index_dir}...")
+        
+    print(f"Loading XGBoost model from {model_path}...")
+    GLOBAL_CLF = xgb.XGBClassifier()
+    GLOBAL_CLF.load_model(model_path)
+    GLOBAL_CLF.set_params(n_jobs=1)
+    
     GLOBAL_CG = CandidateGenerator(index_dir)
     GLOBAL_CG_MR = MRCandidateGenerator(index_dir)
     
+    # Ensure output directories exist
+    os.makedirs(os.path.dirname(os.path.abspath(out_csv)), exist_ok=True)
+    
     output_f = open(out_csv, "w", encoding="utf-8")
-    output_f.write("source_1_id,source_2_id\n")
+    output_f.write("source1_entity_id\tmatched_entity_ids\n")
+    
+    if cand_csv:
+        os.makedirs(os.path.dirname(os.path.abspath(cand_csv)), exist_ok=True)
+        cand_f = open(cand_csv, "w", encoding="utf-8")
+        cand_f.write("source1_entity_id\tcandidate_entity_ids\n")
+    else:
+        cand_f = None
     
     total_processed = 0
     total_found = 0
@@ -137,10 +166,13 @@ def run_inference(s1_path, s2_path, s3_path, index_dir, out_csv, model_path, thr
         chunks = [country_s1[i:i + chunk_size] for i in range(0, len(country_s1), chunk_size)]
         
         for i, chunk in enumerate(chunks):
-            res_dict = process_chunk(chunk, threshold, max_k)
+            res_dict, cand_dict = process_chunk(chunk, threshold, max_k)
             for sid, matched in res_dict.items():
-                for m in matched:
-                    output_f.write(f"{sid},{m}\n")
+                m_str = ",".join(matched)
+                output_f.write(f"{sid}\t{m_str}\n")
+                if cand_f:
+                    c_str = ",".join(cand_dict[sid])
+                    cand_f.write(f"{sid}\t{c_str}\n")
                 total_processed += 1
                 total_found += len(matched)
                 
@@ -155,6 +187,8 @@ def run_inference(s1_path, s2_path, s3_path, index_dir, out_csv, model_path, thr
         gc.collect()
         
     output_f.close()
+    if cand_f:
+        cand_f.close()
     t1 = time.time()
     print(f"\nInference complete in {t1 - t0:.2f} seconds.")
     print(f"Processed {total_processed} queries. Found {total_found} links.")
@@ -167,8 +201,9 @@ if __name__ == "__main__":
     parser.add_argument("--s3", type=str, default="dataset/test/test_source3.tsv")
     parser.add_argument("--index_dir", type=str, default="experiments/final_hardening/test_index")
     parser.add_argument("--out", type=str, default="submission.csv")
+    parser.add_argument("--cand", type=str, default=None)
     parser.add_argument("--model", type=str, default="experiments/final_hardening/artifacts/xgb_15000.ubj")
     parser.add_argument("--threshold", type=float, default=0.98)
     args = parser.parse_args()
     
-    run_inference(args.s1, args.s2, args.s3, args.index_dir, args.out, args.model, args.threshold)
+    run_inference(args.s1, args.s2, args.s3, args.index_dir, args.out, args.cand, args.model, args.threshold)

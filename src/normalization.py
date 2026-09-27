@@ -13,6 +13,7 @@ Supports:
 import re
 import unicodedata
 from typing import List, Set, Tuple
+import functools
 
 # Domain suffixes to recognize in business names
 DOMAIN_PATTERN = re.compile(
@@ -122,17 +123,10 @@ def normalize_name(text: str, strip_legal: bool = False) -> str:
     return " ".join(text.split())
 
 
-def normalize_and_canonicalize(text: str) -> Tuple[str, str, List[str]]:
-    """High-speed single-pass normalization, canonicalization, and tokenization:
-    - Unicode & lowercase normalization
-    - Domain pattern extraction
-    - Ampersand expansion
-    - Punctuation removal
-    - Legal suffix filtering via fast set lookup
-    Returns (norm_name, canon_name, clean_tokens)
-    """
+@functools.lru_cache(maxsize=100000)
+def _cached_normalize_and_canonicalize(text: str) -> Tuple[str, str, Tuple[str, ...]]:
     if not text:
-        return "", "", []
+        return "", "", ()
 
     text_norm = normalize_unicode(text).lower().strip()
     domain_match = DOMAIN_PATTERN.match(text_norm)
@@ -146,7 +140,19 @@ def normalize_and_canonicalize(text: str) -> Tuple[str, str, List[str]]:
     norm_name = " ".join(toks)
     clean_toks = [t for t in toks if t not in LEGAL_SUFFIX_SET]
     canon_name = " ".join(sorted(clean_toks))
-    return norm_name, canon_name, clean_toks
+    return norm_name, canon_name, tuple(clean_toks)
+
+def normalize_and_canonicalize(text: str) -> Tuple[str, str, List[str]]:
+    """High-speed single-pass normalization, canonicalization, and tokenization:
+    - Unicode & lowercase normalization
+    - Domain pattern extraction
+    - Ampersand expansion
+    - Punctuation removal
+    - Legal suffix filtering via fast set lookup
+    Returns (norm_name, canon_name, clean_tokens)
+    """
+    n, c, t = _cached_normalize_and_canonicalize(text)
+    return n, c, list(t)
 
 
 def get_name_tokens(text: str, strip_legal: bool = False, min_len: int = 1) -> List[str]:
@@ -164,6 +170,7 @@ def get_canonical_name_key(text: str, strip_legal: bool = True) -> str:
     return canon
 
 
+@functools.lru_cache(maxsize=100000)
 def normalize_address(text: str) -> str:
     """Normalize address:
     - Lowercase & Unicode normalize
@@ -212,9 +219,10 @@ GENERIC_ADDR_TERMS = {
     "khasra", "rue", "route"
 }
 
-def extract_address_features(addr: str) -> Tuple[List[str], List[str]]:
+@functools.lru_cache(maxsize=100000)
+def _cached_extract_address_features(addr: str) -> Tuple[Tuple[str, ...], Tuple[str, ...]]:
     if not addr:
-        return [], []
+        return (), ()
     tokens = normalize_address(addr).split()
     nums   = [t for t in tokens if t.isdigit() and len(t) >= 2]
     postal = [n for n in nums if len(n) in (5, 6)]
@@ -223,4 +231,8 @@ def extract_address_features(addr: str) -> Tuple[List[str], List[str]]:
         t for t in tokens
         if t.isalpha() and len(t) >= 4 and t not in GENERIC_ADDR_TERMS
     ]
-    return postal + other, salient_alphas
+    return tuple(postal + other), tuple(salient_alphas)
+
+def extract_address_features(addr: str) -> Tuple[List[str], List[str]]:
+    t1, t2 = _cached_extract_address_features(addr)
+    return list(t1), list(t2)

@@ -9,6 +9,7 @@ __pycache__/
 venv/
 ENV/
 env/
+.sagemaker_venv/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
@@ -17,6 +18,7 @@ env/
 # PS/SSH
 .ps
 .ssh
+*.pem
 
 # Pytest
 .pytest_cache/
@@ -31,19 +33,23 @@ env/
 
 # Logs and Caches
 *.log
+nohup.out
 experiments/cache/
 
 # Large Datasets and Output
 dataset/
 output/*.tsv
-output/*.zip
+output/*.tsv.gz
+output/*.csv
+output/.inference_done
 *.parquet
+*.csv
+submission_*.csv
+
 # Generated blocking indexes
+*.pkl
 experiments/phase4/artifacts/indexes/
 experiments/phase7/*_results.json
-.sagemaker_venv/
 experiments/final_hardening/index/
-
-experiments/final_hardening/index/
+experiments/final_hardening/test_index/
 experiments/final_hardening/missed_gt.json
-nohup.out
